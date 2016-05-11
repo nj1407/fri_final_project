@@ -1,4 +1,4 @@
-Language model created by QuickLM on Tue May  3 18:51:36 EDT 2016
+Language model created by QuickLM on Tue May 10 17:17:15 EDT 2016
 Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
 
 The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
@@ -7,36 +7,42 @@ The code that was used to produce this language model is available in Open Sourc
 Please visit http://www.speech.cs.cmu.edu/tools/ for more information
 
 The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
-This model based on a corpus of 6 sentences and 10 words
+This model based on a corpus of 8 sentences and 12 words
 
 \data\
-ngram 1=10
-ngram 2=14
-ngram 3=9
+ngram 1=12
+ngram 2=18
+ngram 3=11
 
 \1-grams:
--0.8451 </s> -0.3010
--0.8451 <s> -0.2341
--1.6232 BACKWARD -0.2341
--1.6232 COME -0.2906
--1.6232 FORWARD -0.2341
--1.6232 HERE -0.2341
--1.6232 LEFT -0.2341
--1.6232 RIGHT -0.2341
--1.6232 STOP -0.2341
--1.3222 TURN -0.2798
+-0.8293 </s> -0.3010
+-0.8293 <s> -0.2314
+-1.7324 BACKWARD -0.2314
+-1.7324 COME -0.2929
+-1.7324 DANCE -0.2314
+-1.7324 FORWARD -0.2314
+-1.7324 HERE -0.2314
+-1.7324 LEFT -0.2314
+-1.7324 PARTY -0.2314
+-1.7324 RIGHT -0.2314
+-1.7324 STOP -0.2314
+-1.4314 TURN -0.2846
 
 \2-grams:
--1.0792 <s> BACKWARD 0.0000
--1.0792 <s> COME 0.0000
--1.0792 <s> FORWARD 0.0000
--1.0792 <s> STOP 0.0000
--0.7782 <s> TURN 0.0000
+-1.2041 <s> BACKWARD 0.0000
+-1.2041 <s> COME 0.0000
+-1.2041 <s> DANCE 0.0000
+-1.2041 <s> FORWARD 0.0000
+-1.2041 <s> PARTY 0.0000
+-1.2041 <s> STOP 0.0000
+-0.9031 <s> TURN 0.0000
 -0.3010 BACKWARD </s> -0.3010
 -0.3010 COME HERE 0.0000
+-0.3010 DANCE </s> -0.3010
 -0.3010 FORWARD </s> -0.3010
 -0.3010 HERE </s> -0.3010
 -0.3010 LEFT </s> -0.3010
+-0.3010 PARTY </s> -0.3010
 -0.3010 RIGHT </s> -0.3010
 -0.3010 STOP </s> -0.3010
 -0.6021 TURN LEFT 0.0000
@@ -45,7 +51,9 @@ ngram 3=9
 \3-grams:
 -0.3010 <s> BACKWARD </s>
 -0.3010 <s> COME HERE
+-0.3010 <s> DANCE </s>
 -0.3010 <s> FORWARD </s>
+-0.3010 <s> PARTY </s>
 -0.3010 <s> STOP </s>
 -0.6021 <s> TURN LEFT
 -0.6021 <s> TURN RIGHT

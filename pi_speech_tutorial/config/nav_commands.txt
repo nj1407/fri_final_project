@@ -4,3 +4,5 @@ backward
 turn left
 turn right
 come here
+dance
+party
