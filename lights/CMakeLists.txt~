@@ -132,7 +132,7 @@ include_directories(
 
 ## Declare a C++ executable
 # add_executable(lights_node src/lights_node.cpp)
-add_executable(serial_node serialOut.cpp)
+add_executable(serial_node src/serialOut.cpp)
 target_link_libraries(serial_node ${catkin_LIBRARIES})
 
 ## Add cmake target dependencies of the executable

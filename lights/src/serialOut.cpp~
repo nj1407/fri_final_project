@@ -17,11 +17,17 @@
 //    return written_bytes == data.length();
 //}
 
-char state;
+char state = 'i';
+char lastState = 'x';
+bool rcv = true;
+bool change = true;
+int count;
+std::string data;
 
-void chatterCallback(const std_msgs::String::ConstPtr& msg)
+void chatterCallback(const std_msgs::String msg)
 {
   state = msg.data[0];
+	rcv = true;
 }
 
 int baud_rate = B115200;
@@ -41,11 +47,7 @@ int main(int argc, char **argv)
     options.c_lflag = 0;
     tcflush(fd, TCIFLUSH);
     tcsetattr(fd, TCSANOW, &options);
-    
-    //fstream = fdopen(fd, "rw");
-while(ros::ok())
-{
-	
+
 	if (fd >= 0)
 		ROS_INFO("OPEN");
 	else
@@ -54,29 +56,65 @@ while(ros::ok())
 		//cfsetispeed(&port_settings, B115200);
 		
 	}
-	ROS_INFO_STREAM("State: " << state);
+    
+    //fstream = fdopen(fd, "rw");
+	ros::Rate loop_rate(1000);
+	while(ros::ok())
+	{
+		ros::spinOnce();
+		while(!rcv && ros::ok())
+		{
+			ros::spinOnce();
+			loop_rate.sleep();
+		}
+		rcv = false;
+	
+		if(state != 'p' && change)
+		{
+			lastState = state;
+	
+	
+			ROS_INFO_STREAM("State: " << state);
 
-	std::string data;
-	if (state == 'd')
-		data = "" + state;
-	else if (state == 'p')
-		data = "e";
-	else if (state == 'w')
-		data = "w 250 0 0";
-	else if(state == 'i')
-		data = "w 0 250 0";
-	else
-		data = "w 250 250 0";
+			
+			if (state == 'd')
+				data = "d 0 0 0";
+			else if (state == 'p')
+				data = "e 0 0 0";
+			else if (state == 'w')
+				data = "b 250 0 0";
+			else if(state == 'i')
+				data = "w 0 250 0";
+			else
+				data = "w 250 250 0";
 	
 	
-	//int colors = 
-	//write(fd, data.c_str(), data.length());
+			//int colors = 
+			write(fd, data.c_str(), data.length());
 	
-	ROS_INFO_STREAM("Wrote " << data);
-	close(fd);
+			ROS_INFO_STREAM("Wrote " << data);
+		}
+		else
+		{
+			if(count <= 20)
+			{
+				change = false
+				data = "e 0 0 0";
+				write(fd, data.c_str(), data.length());
+				ROS_INFO_STREAM("Wrote " << data);
+				count++;
+			}
+			else
+			{
+				count = 0;
+				change = true;
+			}
+		}
 	
-	ros::spin();
+	
+	
 }
+close(fd);
 	 
 	return 0;
 		

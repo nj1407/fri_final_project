@@ -135,6 +135,9 @@ include_directories(
 add_executable(serial_node src/serialOut.cpp)
 target_link_libraries(serial_node ${catkin_LIBRARIES})
 
+add_executable(publish_tester src/publishTester.cpp)
+target_link_libraries(publish_tester ${catkin_LIBRARIES})
+
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(lights_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
