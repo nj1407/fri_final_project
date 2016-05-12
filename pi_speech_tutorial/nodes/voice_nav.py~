@@ -28,7 +28,7 @@ quaternionright = tf.transformations.quaternion_from_euler(0,0,-1.5708)
 quaternionforward = tf.transformations.quaternion_from_euler(0,0,0)
 quaternionbackward = tf.transformations.quaternion_from_euler(0,0,0)
 #partydance = 0
-publed = rospy.Publisher('serial_out', String, queue_size=10)
+publed = rospy.Publisher('five', String, queue_size=10)
 
 class voice_cmd_vel:
     def __init__(self):
